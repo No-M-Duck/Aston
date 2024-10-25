@@ -28,11 +28,16 @@ public class BusLoader implements Loader<Bus>{
             String model = parsedLine[1];
             int mileage = Integer.parseInt(parsedLine[2]);
 
-            buses.add(new Bus.BusBuilder()
+            Bus bus = new Bus.BusBuilder()
                     .number(number)
                     .model(model)
                     .mileage(mileage)
-                    .build());
+                    .build();
+
+            Validator<Bus> validator = new BusValidator();
+            if (validator.isValid(bus)) {
+                buses.add(bus);
+            }
         }
         return buses;
     }
