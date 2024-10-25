@@ -25,12 +25,14 @@ public class BusComparator {
         public int compare(Bus b1, Bus b2) { return Integer.compare(b1.getMileage(), b2.getMileage()); }
     }
 
-    //это для доп задания - игнорируйте, не факт, что оно работает нормально
+    //это для доп задания - компаратор, игнорирующий нечетные числа
+    //по идее, такое должно быть для каждого числового поля
     public static class SortMileageIgnoreOdd implements Comparator<Bus> {
         @Override
         public int compare(Bus b1, Bus b2) {
-            if (b1.getMileage() % 2 != 0)
+            if (b1.getMileage() % 2 != 0 || b2.getMileage() % 2 != 0) {
                 return 0;
+            }
             return Integer.compare(b1.getMileage(), b2.getMileage());
         }
     }
