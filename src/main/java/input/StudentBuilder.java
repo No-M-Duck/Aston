@@ -1,5 +1,7 @@
 package input;
 
+import models.Student;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;

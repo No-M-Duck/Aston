@@ -1,4 +1,4 @@
-package org.example.input;
+package models;
 
 public class Student {
     private final int groupNumber;
