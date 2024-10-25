@@ -1,11 +1,14 @@
 package input;
 
 
-import Validation.BusValidator;
+import Validation.*;
 import com.github.javafaker.Faker;
 
 import models.Bus;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -14,6 +17,25 @@ public class BusLoader implements Loader<Bus>{
 
     private static final String LETTERS = "АВЕКМНОРСТУХ";
 
+    @Override
+    public List<Bus> loadFile(String filePath) throws IllegalArgumentException, IOException {
+        List<Bus> buses = new ArrayList<>();
+        List<String> data = Files.readAllLines(Path.of(filePath));
+        for (String line : data) {
+            String[] parsedLine = line.split(",");
+
+            String number = parsedLine[0];
+            String model = parsedLine[1];
+            int mileage = Integer.parseInt(parsedLine[2]);
+
+            buses.add(new Bus.BusBuilder()
+                    .number(number)
+                    .model(model)
+                    .mileage(mileage)
+                    .build());
+        }
+        return buses;
+    }
 
     @Override
     public List<Bus> loadRnd(int count) {
@@ -22,9 +44,9 @@ public class BusLoader implements Loader<Bus>{
         for (int i = 0; i < count; i++) {
             buses.add(
                     new Bus.BusBuilder()
-                            .setModel(faker.company().name() + " " + faker.letterify("Model-???"))
-                            .setNumber(generateBusNumber(faker))
-                            .setMileage(faker.random().nextInt(250000))
+                            .model(faker.company().name() + " " + faker.letterify("Model-???"))
+                            .number(generateBusNumber(faker))
+                            .mileage(faker.random().nextInt(250000))
                             .build()
             );
         }
