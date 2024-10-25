@@ -24,11 +24,16 @@ public class StudentLoader implements Loader<Student>{
             double averageScore = Double.parseDouble(parsedLine[1]);
             int recordBookNumber = Integer.parseInt(parsedLine[2]);
 
-            students.add(new Student.StudentBuilder()
+            Student student = new Student.StudentBuilder()
                     .groupNumber(groupNumber)
                     .avgScore(averageScore)
                     .recordBookNumber(recordBookNumber)
-                    .build());
+                    .build();
+
+            Validator<Student> validator = new StudentValidator();
+            if (validator.isValid(student)) {
+                students.add(student);
+            }
         }
         return students;
     }

@@ -25,11 +25,16 @@ public class UserLoader implements Loader<User>{
             String password = parsedLine[1];
             String email = parsedLine[2];
 
-            users.add(new User.UserBuilder()
+            User user = new User.UserBuilder()
                     .name(name)
                     .password(password)
                     .email(email)
-                    .build());
+                    .build();
+
+            Validator<User> validator = new UserValidator();
+            if (validator.isValid(user)) {
+                users.add(user);
+            }
 
         }
         return users;
