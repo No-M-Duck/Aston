@@ -3,24 +3,24 @@ package models;
 public class Student {
     private final int groupNumber;
     private final double averageScore;
-    private final String recordBookNumber;
+    private final int recordBookNumber;
 
     public static class StudentBuilder {
         private int groupNumber;
         private double averageScore;
-        private String recordBookNumber;
+        private int recordBookNumber;
 
         public StudentBuilder groupNumber(int groupNumber) {
             this.groupNumber = groupNumber;
             return this;
         }
 
-        public StudentBuilder averageScore(double averageScore) {
+        public StudentBuilder avgScore(double averageScore) {
             this.averageScore = averageScore;
             return this;
         }
 
-        public StudentBuilder recordBookNumber(String recordBookNumber) {
+        public StudentBuilder recordBookNumber(int recordBookNumber) {
             this.recordBookNumber = recordBookNumber;
             return this;
         }
@@ -38,16 +38,20 @@ public class Student {
     public int getGroupNumber(){
         return groupNumber;
     }
-    public double getAverageScore(){
+    public double getAvgScore(){
         return averageScore;
     }
-    public String getRecordBookNumber() {
+    public int getRecordBookNumber() {
         return recordBookNumber;
     }
 
     @Override
     public String toString() {
-        return "Student{" + "groupNumber='" + groupNumber + '\'' + ", averageScore=" + averageScore + ", recordBookNumber=" + recordBookNumber + '}';
+        return "Student{" +
+                "groupNumber=" + groupNumber +
+                ", averageScore=" + averageScore +
+                ", recordBookNumber='" + recordBookNumber + '\'' +
+                '}';
     }
 }
 

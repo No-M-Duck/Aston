@@ -1,5 +1,8 @@
 package input;
 
+import Validation.UserValidator;
+import Validation.Validator;
+import com.github.javafaker.Faker;
 import models.User;
 
 import java.util.ArrayList;
@@ -47,6 +50,22 @@ public class UserLoader implements Loader<User>{
             if(validator.isValid(user)){
                 users.add(user);
             }
+        }
+        return users;
+    }
+
+    @Override
+    public List<User> loadRnd(int count) {
+        Faker faker = Loader.getFaker();
+        List<User> users = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            users.add(
+                    new User.UserBuilder()
+                            .name(faker.name().firstName())
+                            .password(faker.internet().password())
+                            .email(faker.internet().emailAddress())
+                            .build()
+            );
         }
         return users;
     }

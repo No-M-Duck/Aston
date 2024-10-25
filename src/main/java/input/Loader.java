@@ -9,6 +9,7 @@ public interface Loader<T> {
         return new Faker();
     }
     List<T> loadConsole();
+    List<T> loadRnd(int count);
 
 
 }
