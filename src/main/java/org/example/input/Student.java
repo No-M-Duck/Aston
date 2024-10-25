@@ -15,7 +15,7 @@ public class Student {
             return this;
         }
 
-        public StudentBuilder averageScore(double averageScore) {
+        public StudentBuilder avgScore(double averageScore) {
             this.averageScore = averageScore;
             return this;
         }
