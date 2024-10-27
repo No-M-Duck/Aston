@@ -19,11 +19,11 @@ public class UserLoader implements Loader<User>{
         List<User> users = new ArrayList<>();
         List<String> data = Files.readAllLines(Path.of(filePath));
         for (String line : data) {
-            String[] parsedLine = line.split(",");
+            String[] parsedLine = line.split(";");
 
             String name = parsedLine[0];
-            String password = parsedLine[1];
-            String email = parsedLine[2];
+            String email = parsedLine[1];
+            String password = parsedLine[2];
 
             User user = new User.UserBuilder()
                     .name(name)

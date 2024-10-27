@@ -18,7 +18,7 @@ public class StudentLoader implements Loader<Student>{
         List<Student> students = new ArrayList<>();
         List<String> data = Files.readAllLines(Path.of(filePath));
         for (String line : data) {
-            String[] parsedLine = line.split(",");
+            String[] parsedLine = line.split(";");
 
             int groupNumber = Integer.parseInt(parsedLine[0]);
             double averageScore = Double.parseDouble(parsedLine[1]);
