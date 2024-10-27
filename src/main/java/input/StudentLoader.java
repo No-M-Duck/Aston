@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class StudentBuilder implements Loader<Student>{
+public class StudentLoader implements Loader<Student>{
     @Override
     public List<Student> loadConsole() {
         List<Student> students=new ArrayList<>();
