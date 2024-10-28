@@ -22,13 +22,13 @@ public class UserLoader implements Loader<User>{
             String[] parsedLine = line.split(",");
 
             String name = parsedLine[0];
-            String password = parsedLine[1];
-            String email = parsedLine[2];
+            String email = parsedLine[1];
+            String password = parsedLine[2];
 
             User user = new User.UserBuilder()
                     .name(name)
-                    .password(password)
                     .email(email)
+                    .password(password)
                     .build();
 
             Validator<User> validator = new UserValidator();

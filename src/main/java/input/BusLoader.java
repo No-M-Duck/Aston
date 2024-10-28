@@ -49,7 +49,7 @@ public class BusLoader implements Loader<Bus>{
         for (int i = 0; i < count; i++) {
             buses.add(
                     new Bus.BusBuilder()
-                            .model(faker.company().name() + " " + faker.letterify("Model-???"))
+                            .model(faker.company().name().split("[,\\s]+")[0] + " " + faker.letterify("Model-???"))
                             .number(generateBusNumber(faker))
                             .mileage(faker.random().nextInt(250000))
                             .build()
@@ -58,7 +58,7 @@ public class BusLoader implements Loader<Bus>{
         return buses;
     }
 
-    public static String generateBusNumber(Faker faker) {
+    private static String generateBusNumber(Faker faker) {
         char firstLetter = LETTERS.charAt(faker.random().nextInt(LETTERS.length()));
         int digits = faker.number().numberBetween(100, 1000);
         char secondLetter = LETTERS.charAt(faker.random().nextInt(LETTERS.length()));
@@ -75,8 +75,8 @@ public class BusLoader implements Loader<Bus>{
 
         Scanner scan=new Scanner(System.in);
 
-        System.out.println("Для создания User введите данные следующим образом:");
-        System.out.println("Номер, Модель, Пробег");
+        System.out.println("Для создания Bus введите данные следующим образом:");
+        System.out.println("Номер(А000АА00), Модель, Пробег");
         System.out.println("ВНИМАНИЕ! Ввод происходит до введения пустой строки!");
 
         while(true){
