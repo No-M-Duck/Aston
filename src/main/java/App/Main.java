@@ -7,21 +7,19 @@ import models.User;
 import strategy.BusComparator;
 import strategy.SelectionSortStrategy;
 import strategy.SortStrategy;
-
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-       Main main = new Main();
-       main.TestUser();
+        Main main = new Main();
+        main.TestUser();
     }
 
-    private void TestUser(){
-        List<User> usersFile =  new ArrayList<>();
-        List<User>  usersRnd =  new ArrayList<>();
-        List<User> usersConsole =  new ArrayList<>();
+    private void TestUser() {
+        List<User> usersFile = new ArrayList<>();
+        List<User> usersRnd = new ArrayList<>();
+        List<User> usersConsole = new ArrayList<>();
 
         UserLoader userLoader = new UserLoader();
 
@@ -31,12 +29,9 @@ public class Main {
         SortStrategy<User> strategy = new SelectionSortStrategy<>();
 
 
-
-
-
     }
 
-    private void TestBus(){
+    private void TestBus() {
         List<Bus> busesFile = new ArrayList<>();
         List<Bus> busesRnd = new ArrayList<>();
         List<Bus> busesConsole = new ArrayList<>();
@@ -45,9 +40,9 @@ public class Main {
 
         busesRnd = loader.loadRnd(5);
         showList(busesRnd);
-        try{
+        try {
             busesFile = loader.loadFile("buses.csv");
-        }catch (Exception exception){
+        } catch (Exception exception) {
             exception.printStackTrace();
         }
         //showList(busesFile);
@@ -57,7 +52,7 @@ public class Main {
         showList(busesRnd);
     }
 
-    private void showList(List elems){
+    private void showList(List elems) {
         elems.stream().forEach(System.out::println);
     }
 }
