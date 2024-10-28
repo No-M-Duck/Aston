@@ -14,6 +14,7 @@ import java.util.Scanner;
 
 public class StudentLoader implements Loader<Student>{
 
+
     public List<Student> loadFile(String filePath) throws IllegalArgumentException, IOException {
         List<Student> students = new ArrayList<>();
         List<String> data = Files.readAllLines(Path.of(filePath));
@@ -37,6 +38,7 @@ public class StudentLoader implements Loader<Student>{
         }
         return students;
     }
+
 
     @Override
     public List<Student> loadConsole() {
@@ -74,13 +76,16 @@ public class StudentLoader implements Loader<Student>{
         Validator<Student> validator=new StudentValidator();
 
         for (String[] elem:inputArray){
+
             Student student=new Student.StudentBuilder().groupNumber(Integer.parseInt(elem[0])).avgScore(Double.parseDouble(elem[1])).recordBookNumber(Integer.parseInt(elem[2])).build();
+
             if(validator.isValid(student)){
                 students.add(student);
             }
         }
         return students;
     }
+
 
     @Override
     public List<Student> loadRnd(int count) {
