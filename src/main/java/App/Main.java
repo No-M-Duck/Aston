@@ -6,7 +6,6 @@ import strategy.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -14,6 +13,9 @@ public class Main {
         Main main = new Main();
         main.TestStudent();
     }
+
+
+
     private void TestStudent() {
         List<Student> studentsRnd = new ArrayList<>();
         List<Student> studentsFile = new ArrayList<>();
@@ -25,7 +27,7 @@ public class Main {
         showList(studentsRnd);
         System.out.println("* * * File Student * * *");
         try {
-            studentsFile = loader.loadFile("students.csv");
+            // studentsFile = loader.loadFile("students.csv");
         } catch (Exception exception) {
             exception.printStackTrace();
         }
@@ -34,7 +36,6 @@ public class Main {
         System.out.println("* * * Console Student * * *");
         studentsConsole = loader.loadConsole();
         showList(studentsConsole);
-         */
         SelectionSortStrategy<Student> strategy = new SelectionSortStrategy<>();
         System.out.println("* * * Random Student sort by averageScore * * *");
         strategy.sort(studentsRnd, StudentComparator.averageScore());
@@ -54,6 +55,9 @@ public class Main {
         System.out.println("* * * Random User sort by recordBookNumber ignOdd* * *");
         strategy.sort(studentsRnd, StudentComparator.recordBookNumber(true));
         showList(studentsRnd);
+         */
+        Student st = BinarySearcher.findElement(studentsRnd,studentsRnd.get(2),StudentComparator.groupNumber());
+        System.out.println(st);
     }
 
     private void TestUser() {
