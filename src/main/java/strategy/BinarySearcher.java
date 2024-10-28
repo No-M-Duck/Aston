@@ -51,7 +51,7 @@ public class BinarySearcher {
             }
 
         }
-        return -(low + 1);
+        return -1;
     }
 }
 
