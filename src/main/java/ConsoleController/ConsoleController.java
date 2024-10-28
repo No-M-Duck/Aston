@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ConsoleController {
-    private Scanner scan = new Scanner(System.in);
+    private final Scanner scan = new Scanner(System.in);
     private List dataList;
     Class type;
 
@@ -173,29 +173,29 @@ public class ConsoleController {
     }
 
     private void sortMenu() {
-//        SortStrategy strategy;
-//        if (type == Bus.class){
-//            strategy=new SelectionSortStrategy<Bus>();
-//        }
-//        if(type == Student.class){
-//            strategy=new SelectionSortStrategy<Student>();
-//        }
-//        if(type == User.class){
-//            strategy=new SelectionSortStrategy<User>();
-//        }
-//        if (strategy!=null){
-//            choiceField(strategy);
-//        }
+        SortStrategy sortStrategy=setAlgorithm();
+        if (sortStrategy!=null){
+            choiceFieldBus(sortStrategy);
+        }
     }
 
 
-    private SortStrategy<?> setAlgorithm(Class<?> type) {
+    private SortStrategy<?> setAlgorithm (){
         while (true) {
             printSortMenu();
             int choice = getChoice();
             switch (choice) {
                 case 1:
-                    return new SelectionSortStrategy<>();
+                    if (type==Bus.class){
+                        return new SelectionSortStrategy<Bus>();
+                    }
+                    if (type==User.class){
+                        return new SelectionSortStrategy<User>();
+                    }
+                    if (type==Student.class){
+                        return new SelectionSortStrategy<Student>();
+                    }
+
                 case 2:
                     return null;
                 default:
@@ -204,25 +204,26 @@ public class ConsoleController {
         }
     }
 
-    private void choiceField(SortStrategy<?> strategy) {
-//        while (true) {
-//            printFieldsCompare();
-//            int choice = getChoice();
-//            switch (choice) {
-//                case 1:
-//                    if (type==Bus.class){
-//
-//                    }
-//
-//
-//                case 2:
-//                case 3:
-//
-//                default:
-//                    System.out.println("Некорректный ввод");
-//            }
-//        }
-
+    private void choiceFieldBus(SortStrategy<Bus> strategy) {
+        while (true) {
+            printFieldsCompare();
+            int choice = getChoice();
+            switch (choice) {
+                case 1:
+                    strategy.sort(dataList, new BusComparator.SortNumber());
+                    return;
+                case 2:
+                    strategy.sort(dataList, new BusComparator.SortModel());
+                    return;
+                case 3:
+                    strategy.sort(dataList, new BusComparator.SortMileage());
+                    return;
+                case 4:
+                    return;
+                default:
+                    System.out.println("Некорректный ввод");
+            }
+        }
     }
 
     private void printSortMenu(){
