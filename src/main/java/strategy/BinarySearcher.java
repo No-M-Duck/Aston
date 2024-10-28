@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class BinarySearcher {
 
-    public static <T> int find(List<T> originalList, T target, Comparator<T> comparator) {
+    public static <T> T find(List<T> originalList, T target, Comparator<T> comparator) {
         //creating new list in order to avoid sorting the original collection
         List<T> list = new ArrayList<> (originalList);
 
@@ -15,7 +15,7 @@ public class BinarySearcher {
         SelectionSortStrategy<T> sortStrategy = new SelectionSortStrategy<>();
         sortStrategy.sort(list, comparator);
 
-        return Collections.binarySearch(list, target, comparator);
+        return list.get(Collections.binarySearch(list, target, comparator));
     }
 }
 
