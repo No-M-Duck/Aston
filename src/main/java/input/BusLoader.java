@@ -22,7 +22,7 @@ public class BusLoader implements Loader<Bus>{
         List<Bus> buses = new ArrayList<>();
         List<String> data = Files.readAllLines(Path.of(filePath));
         for (String line : data) {
-            String[] parsedLine = line.split(",");
+            String[] parsedLine = line.split(";");
 
             String number = parsedLine[0];
             String model = parsedLine[1];
