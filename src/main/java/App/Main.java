@@ -1,7 +1,10 @@
 package App;
 
+import ConsoleController.ConsoleController;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        ConsoleController app=new ConsoleController();
+        app.start();
     }
 }
