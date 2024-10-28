@@ -1,6 +1,6 @@
 package Validation;
 
-import org.example.models.Bus;
+import models.Bus;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
