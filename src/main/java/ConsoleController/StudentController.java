@@ -80,14 +80,22 @@ public class StudentController extends AbstService<Student>{
                     checkData(data);
                     continue;
                 case 4: {
-                    StudentWriter writer = new StudentWriter();
-                    writer.toFile(data);
+                    try {
+                        StudentWriter writer = new StudentWriter();
+                        writer.toFile(data);
+                    } catch (IOException e) {
+                        System.out.println("Ошибка записи файла");
+                    }
                     break;
                 }
                 case 5: {
-                    StudentWriter writer = new StudentWriter();
-                    writer.toFile(super.foundElement);
-                    super.foundElement = null;
+                    try {
+                        StudentWriter writer = new StudentWriter();
+                        writer.toFile(super.foundElement);
+                        super.foundElement = null;
+                    } catch (IOException e) {
+                        System.out.println("Ошибка записи файла");
+                    }
                     break;
                 }
                 default:
