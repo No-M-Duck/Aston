@@ -16,6 +16,15 @@ public class StudentWriter extends CollectionWriter<Student> {
                     +student.getRecordBookNumber();
             studentsOutput.add(studentString);
         }
-        writeFile("students", studentsOutput);
+        writeCollection("students", studentsOutput);
+    }
+
+    public void toFile (Student student) {
+        String studentString = student.getGroupNumber()
+                +delimiter
+                +student.getAvgScore()
+                +delimiter
+                +student.getRecordBookNumber();
+        writeElement("students_found", studentString);
     }
 }

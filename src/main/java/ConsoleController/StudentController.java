@@ -11,6 +11,7 @@ import strategy.SelectionSortStrategy;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.NoSuchElementException;
 
 public class StudentController extends AbstService<Student>{
@@ -36,7 +37,7 @@ public class StudentController extends AbstService<Student>{
                 System.out.println("Введите полное имя файла(example.csv)");
                 System.out.println("Доступные расширения файлов: .csv");
                 System.out.println("Если ваш файл находится не в директории программы, введите полный путь к файлу");
-                String path = scanner.next();
+                String path = "output\\" + scanner.next();
                 try {
                     data = StudentLoader.loadFile(path);
                 } catch (NumberFormatException |
@@ -78,10 +79,17 @@ public class StudentController extends AbstService<Student>{
                 case 3:
                     checkData(data);
                     continue;
-                case 4:
+                case 4: {
                     StudentWriter writer = new StudentWriter();
                     writer.toFile(data);
                     break;
+                }
+                case 5: {
+                    StudentWriter writer = new StudentWriter();
+                    writer.toFile(super.foundElement);
+                    super.foundElement = null;
+                    break;
+                }
                 default:
                     defChoice();
             }
@@ -151,8 +159,10 @@ public class StudentController extends AbstService<Student>{
         }
         if(result>-1){
             System.out.println("Мы нашли его. Индекс вашего элемента: "+result+"; позиция в списке: "+(result+1));
+            super.foundElement = data.get(result);
         }else if(resultStudent!=null){
             System.out.println("Мы нашли его. Ваш элемент: "+resultStudent);
+            super.foundElement = resultStudent;
         }else {
             System.out.println("Ничего не обнаружено.Попробуем снова");
             menuStudentSearch();
@@ -185,6 +195,7 @@ public class StudentController extends AbstService<Student>{
         if(choice%3==2){
             System.out.print("Введите средний балл: ");
             try {
+                scanner.useLocale(Locale.UK);
                 double avg = scanner.nextDouble();
                 Student = new Student.StudentBuilder().avgScore(avg).build();
             }catch (NoSuchElementException exception){

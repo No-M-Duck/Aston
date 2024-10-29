@@ -35,7 +35,7 @@ public class BusController extends AbstService<Bus> {
                 System.out.println("Введите полное имя файла(example.csv)");
                 System.out.println("Доступные расширения файлов: .csv");
                 System.out.println("Если ваш файл находится не в директории программы, введите полный путь к файлу");
-                String path = scanner.next();
+                String path = "output\\" + scanner.next();
                 try {
                     data = busLoader.loadFile(path);
                 } catch (NumberFormatException |
@@ -77,10 +77,17 @@ public class BusController extends AbstService<Bus> {
                 case 3:
                     checkData(data);
                     continue;
-                case 4:
+                case 4: {
                     BusWriter writer = new BusWriter();
                     writer.toFile(data);
                     break;
+                }
+                case 5: {
+                    BusWriter writer = new BusWriter();
+                    writer.toFile(super.foundElement);
+                    super.foundElement = null;
+                    break;
+                }
                 default:
                     defChoice();
             }
@@ -144,8 +151,10 @@ public class BusController extends AbstService<Bus> {
         }
         if(result>-1){
             System.out.println("Мы нашли его. Индекс вашего элемента: "+result+"; позиция в списке: "+(result+1));
+            super.foundElement = data.get(result);
         }else if(resultBus!=null){
             System.out.println("Мы нашли его. Ваш элемент: "+resultBus);
+            super.foundElement = resultBus;
         }else {
             System.out.println("Ничего не обнаружено.Попробуем снова");
             menuBusSearch();

@@ -12,6 +12,11 @@ public class BusWriter extends CollectionWriter<Bus> {
             String busString = bus.getNumber()+delimiter+bus.getModel()+delimiter+bus.getMileage();
             busesOutput.add(busString);
         }
-        writeFile("buses", busesOutput);
+        writeCollection("buses", busesOutput);
+    }
+
+    public void toFile (Bus bus) {
+        String busString = bus.getNumber()+delimiter+bus.getModel()+delimiter+bus.getMileage();
+        writeElement("buses_found", busString);
     }
 }

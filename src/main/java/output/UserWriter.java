@@ -12,6 +12,11 @@ public class UserWriter extends CollectionWriter<User> {
             String userString = user.getName()+delimiter+user.getEmail()+delimiter+user.getPassword();
             usersOutput.add(userString);
         }
-        writeFile("users", usersOutput);
+        writeCollection("users", usersOutput);
+    }
+
+    public void toFile (User user) {
+        String userString = user.getName()+delimiter+user.getEmail()+delimiter+user.getPassword();
+        writeElement("users_found", userString);
     }
 }
