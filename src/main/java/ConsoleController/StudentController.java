@@ -80,8 +80,8 @@ public class StudentController extends AbstService<Student>{
                     checkData(data);
                     continue;
                 case 4: {
-                    StudentWriter writer = new StudentWriter();
                     try {
+                        StudentWriter writer = new StudentWriter();
                         writer.toFile(data);
                     } catch (IOException e) {
                         System.out.println("Ошибка записи файла");
