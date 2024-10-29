@@ -5,7 +5,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
 
-public abstract class CollectionWriter<T> {
+public abstract class       CollectionWriter<T> {
     protected String delimiter = ";";
     String fileType = ".csv";
 

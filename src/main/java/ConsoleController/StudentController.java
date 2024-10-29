@@ -56,7 +56,7 @@ public class StudentController extends AbstService<Student>{
                 defChoice();
 
         }
-        checkData(data);
+        if(!checkData(data)) return 0;
         return 1;
     }
 
