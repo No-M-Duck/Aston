@@ -52,7 +52,7 @@ public class UserController extends AbstService<User> {
                 defChoice();
 
         }
-        checkData(data);
+        if(!checkData(data)) return 0;
         return 1;
     }
 

@@ -54,7 +54,7 @@ public class BusController extends AbstService<Bus> {
                 defChoice();
 
         }
-        checkData(data);
+        if(!checkData(data)) return 0;
         return 1;
     }
 
@@ -62,7 +62,7 @@ public class BusController extends AbstService<Bus> {
 
     public void menuBusSort() {
         localExit = true;
-        while (localExit) {
+        while (localExit ) {
             int menucount = super.menuFunctions();
             int answer = super.getAnswer(menucount);
             switch (answer) {
