@@ -11,6 +11,7 @@ public class StudentWriter extends CollectionWriter<Student> {
         ArrayList<String> studentsOutput = new ArrayList<>();
         for (Student student : students) {
             String studentString = getString(student);
+            studentsOutput.add(studentString);
         }
         writeCollection("students", studentsOutput);
     }

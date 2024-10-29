@@ -11,6 +11,7 @@ public class BusWriter extends CollectionWriter<Bus> {
         ArrayList<String> busesOutput = new ArrayList<>();
         for (Bus bus : buses) {
             String busString = getString(bus);
+            busesOutput.add(busString);
         }
         writeCollection("buses", busesOutput);
     }
