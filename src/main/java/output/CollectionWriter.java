@@ -9,7 +9,7 @@ public abstract class CollectionWriter<T> {
     protected String delimiter = ";";
     String fileType = ".csv";
 
-    protected void writeCollection(String type, List<String> output) {
+    protected void writeCollection(String type, List<String> output) throws IOException {
         File directory = getDirectory();
         File file = getFile(directory, type, true);
         try (FileWriter fileWriter = new FileWriter(file)) {
@@ -17,19 +17,15 @@ public abstract class CollectionWriter<T> {
                 fileWriter.write(line + "\n");
             }
             System.out.println("Collection saved to " + file.getAbsolutePath());
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
-    protected void writeElement(String type, String data) {
+    protected void writeElement(String type, String data) throws IOException {
         File directory = getDirectory();
         File file = getFile(directory, type, false);
         try (FileWriter fileWriter = new FileWriter(file, true)) {
             fileWriter.write(data + "\n");
             System.out.println("Element saved to " + file.getAbsolutePath());
-        } catch (IOException e) {
-            e.printStackTrace();
         }
     }
 
@@ -59,5 +55,5 @@ public abstract class CollectionWriter<T> {
         return directory;
     }
 
-    public abstract void toFile(List<T> collection);
+    public abstract void toFile(List<T> collection) throws IOException;
 }

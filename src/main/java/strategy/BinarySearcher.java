@@ -14,7 +14,6 @@ public class BinarySearcher {
         try {
             return list.get(index);
         } catch (IndexOutOfBoundsException e) {
-            System.out.println("Element not found.");
             return null;
         }
     }

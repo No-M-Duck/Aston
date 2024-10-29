@@ -74,14 +74,22 @@ public class UserController extends AbstService<User> {
                     checkData(data);
                     continue;
                 case 4: {
-                    UserWriter writer = new UserWriter();
-                    writer.toFile(data);
+                    try {
+                        UserWriter writer = new UserWriter();
+                        writer.toFile(data);
+                    } catch (IOException e) {
+                        System.out.println("Ошибка записи файла");
+                    }
                     break;
                 }
                 case 5: {
-                    UserWriter writer = new UserWriter();
-                    writer.toFile(super.foundElement);
-                    super.foundElement = null;
+                    try {
+                        UserWriter writer = new UserWriter();
+                        writer.toFile(super.foundElement);
+                        super.foundElement = null;
+                    } catch (IOException e) {
+                        System.out.println("Ошибка записи файла");
+                    }
                     break;
                 }
                 default:

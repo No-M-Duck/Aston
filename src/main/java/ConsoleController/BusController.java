@@ -78,14 +78,22 @@ public class BusController extends AbstService<Bus> {
                     checkData(data);
                     continue;
                 case 4: {
-                    BusWriter writer = new BusWriter();
-                    writer.toFile(data);
+                    try {
+                        BusWriter writer = new BusWriter();
+                        writer.toFile(data);
+                    } catch (IOException e) {
+                        System.out.println("Ошибка записи файла");
+                    }
                     break;
                 }
                 case 5: {
-                    BusWriter writer = new BusWriter();
-                    writer.toFile(super.foundElement);
-                    super.foundElement = null;
+                    try {
+                        BusWriter writer = new BusWriter();
+                        writer.toFile(super.foundElement);
+                        super.foundElement = null;
+                    } catch (IOException e) {
+                        System.out.println("Ошибка записи файла");
+                    }
                     break;
                 }
                 default:
