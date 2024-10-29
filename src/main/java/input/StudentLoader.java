@@ -57,7 +57,7 @@ public class StudentLoader implements Loader<Student>{
             if (input.equals("")){
                 break;
             }
-            String[] studentString=input.split(", ");
+            String[] studentString=input.split(",\\s*");
             if(studentString.length==3){
                 inputArray.add(studentString);
             }

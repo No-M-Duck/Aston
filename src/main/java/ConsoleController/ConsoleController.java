@@ -15,7 +15,8 @@ import java.io.IOException;
 import java.util.*;
 
 public class ConsoleController {
-    private Scanner scan = new Scanner(System.in);
+    private Scanner scan = new Scanner(System.in).useLocale(Locale.UK);
+
 
     public void run() {
 

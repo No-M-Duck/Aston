@@ -38,14 +38,17 @@ public class BusController extends AbstService<Bus> {
                 String path = scanner.next();
                 try {
                     data = busLoader.loadFile(path);
-                } catch (IOException exception) {
-                    System.out.println("Мы не смогли найти ваш файл");
+                } catch (NumberFormatException |
+                         ArrayIndexOutOfBoundsException|
+                         IOException exception) {
+                    System.out.println("Мы не смогли найти ваш файл или ваш файл содержит некорректные данные");
                     System.out.println("Попробуйте выполнить несколько предыдущих шагов снова");
-                    menuBusCreate();
+                    return menuBusCreate();
                 }
                 break;
             case 3:
                 data = busLoader.loadConsole();
+                if(data.isEmpty()) return 0;
                 break;
             default:
                 defChoice();
