@@ -17,7 +17,6 @@ public class SelectionSortStrategy<T> implements SortStrategy<T> {
                     minIndex = j;
                 }
             }
-            // swap elements if minIndex changed
             if (minIndex != i) {
                 T temp = list.get(minIndex);
                 list.set(minIndex, list.get(i));

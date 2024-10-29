@@ -17,7 +17,9 @@ public class UserValidator implements Validator<User> {
         return isNameValid(user) && isPasswordValid(user) && isEmailValid(user);
     }
 
-    private boolean isNameValid(User user) {
+
+
+    public boolean isNameValid(User user) {
         if (user.getName() == null || user.getName().trim().isEmpty()) {
             logInvalidUser(user, Level.SEVERE, "User name is invalid or empty");
             return false;
@@ -25,7 +27,7 @@ public class UserValidator implements Validator<User> {
         return true;
     }
 
-    private boolean isPasswordValid(User user) {
+    public boolean isPasswordValid(User user) {
         if (user.getPassword() == null || user.getPassword().trim().isEmpty()) {
             logInvalidUser(user, Level.SEVERE, "Password is invalid or empty");
             return false;
@@ -33,7 +35,7 @@ public class UserValidator implements Validator<User> {
         return true;
     }
 
-    private boolean isEmailValid(User user) {
+    public boolean isEmailValid(User user) {
         if (user.getEmail() == null || user.getEmail().trim().isEmpty()) {
             logInvalidUser(user, Level.SEVERE, "Email is invalid or empty");
             return false;

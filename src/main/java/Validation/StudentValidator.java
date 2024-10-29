@@ -14,7 +14,9 @@ public class StudentValidator implements Validator<Student> {
         return isAvgScoreValid(student) && isNumberGroupValid(student) && isRecordBookNumberValid(student);
     }
 
-    private boolean isAvgScoreValid(Student student) {
+
+
+    public boolean isAvgScoreValid(Student student) {
         if (student.getAvgScore() <= 0 || student.getAvgScore() > 10) {
             logInvalidStudent(student, Level.SEVERE, "Average value of the student's grade is out of valid range (0-10)");
             return false;
@@ -22,7 +24,7 @@ public class StudentValidator implements Validator<Student> {
         return true;
     }
 
-    private boolean isNumberGroupValid(Student student) {
+    public boolean isNumberGroupValid(Student student) {
         if (student.getGroupNumber() <= 0) {
             logInvalidStudent(student, Level.SEVERE, "Number group is negative or zero");
             return false;
@@ -30,7 +32,7 @@ public class StudentValidator implements Validator<Student> {
         return true;
     }
 
-    private boolean isRecordBookNumberValid(Student student) {
+    public boolean isRecordBookNumberValid(Student student) {
         if (student.getRecordBookNumber() <= 0) {
             logInvalidStudent(student, Level.SEVERE, "Record book number is negative or zero");
             return false;
