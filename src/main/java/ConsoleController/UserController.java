@@ -33,8 +33,7 @@ public class UserController extends AbstService<User> {
                 System.out.println("Введите полное имя файла(example.csv)");
                 System.out.println("Доступные расширения файлов: .csv");
                 System.out.println("Если ваш файл находится не в директории программы, введите полный путь к файлу");
-                String path = scanner.next();
-                try {
+                String path = "output\\" + scanner.next();                try {
                     data = loader.loadFile(path);
                 } catch (NumberFormatException |
                          ArrayIndexOutOfBoundsException|
