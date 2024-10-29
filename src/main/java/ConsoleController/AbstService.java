@@ -5,10 +5,12 @@ import java.util.*;
 public class AbstService<T> implements Service<T>{
 
     protected static boolean localExit = true;
+    protected T foundElement = null;
 
     protected Scanner scanner = new Scanner(System.in).useLocale(Locale.UK);
     @Override
     public int menuCreate() {
+        foundElement = null;
         System.out.println("* * * Создание данных * * *");
         System.out.println("0.Сменить тип данных(Вернуться в главное меню)");
         System.out.println("1.Случайные данные");
@@ -48,8 +50,11 @@ public class AbstService<T> implements Service<T>{
         System.out.println("1.Отсортировать данные(по полю класса)");
         System.out.println("2.Поиск элемента");
         System.out.println("3.Показать данные");
-        System.out.println("4.Сохранить данные в файл(формат csv)");
-        return 4;
+        System.out.println("4.Сохранить коллекцию в файл(формат csv)");
+        if (foundElement != null) {
+            System.out.println("5.Сохранить найденный элемент в файл");
+            return 5;
+        } else return 4;
     }
 
 

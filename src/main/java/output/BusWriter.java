@@ -9,9 +9,17 @@ public class BusWriter extends CollectionWriter<Bus> {
     public void toFile (List<Bus> buses) {
         ArrayList<String> busesOutput = new ArrayList<>();
         for (Bus bus : buses) {
-            String busString = bus.getNumber()+delimiter+bus.getModel()+delimiter+bus.getMileage();
-            busesOutput.add(busString);
+            String busString = getString(bus);
         }
-        writeFile("buses", busesOutput);
+        writeCollection("buses", busesOutput);
+    }
+
+    public void toFile (Bus bus) {
+        String busString = getString(bus);
+        writeElement("buses_found", busString);
+    }
+
+    private String getString(Bus bus) {
+        return bus.getNumber()+delimiter+bus.getModel()+delimiter+bus.getMileage();
     }
 }

@@ -73,10 +73,17 @@ public class UserController extends AbstService<User> {
                 case 3:
                     checkData(data);
                     continue;
-                case 4:
+                case 4: {
                     UserWriter writer = new UserWriter();
                     writer.toFile(data);
                     break;
+                }
+                case 5: {
+                    UserWriter writer = new UserWriter();
+                    writer.toFile(super.foundElement);
+                    super.foundElement = null;
+                    break;
+                }
                 default:
                     defChoice();
             }
@@ -136,8 +143,10 @@ public class UserController extends AbstService<User> {
         }
         if (result > -1) {
             System.out.println("Мы нашли его. Индекс вашего элемента: " + result + "; позиция в списке: " + (result + 1));
+            super.foundElement = data.get(result);
         } else if (resultUser != null) {
             System.out.println("Мы нашли его. Ваш элемент: " + resultUser);
+            super.foundElement = resultUser;
         } else {
             System.out.println("Ничего не обнаружено.Попробуем снова");
             menuUserSearch();

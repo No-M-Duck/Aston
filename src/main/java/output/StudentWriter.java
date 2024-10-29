@@ -9,13 +9,21 @@ public class StudentWriter extends CollectionWriter<Student> {
     public void toFile (List<Student> students) {
         ArrayList<String> studentsOutput = new ArrayList<>();
         for (Student student : students) {
-            String studentString = student.getGroupNumber()
-                    +delimiter
-                    +student.getAvgScore()
-                    +delimiter
-                    +student.getRecordBookNumber();
-            studentsOutput.add(studentString);
+            String studentString = getString(student);
         }
-        writeFile("students", studentsOutput);
+        writeCollection("students", studentsOutput);
+    }
+
+    public void toFile (Student student) {
+        String studentString = getString(student);
+        writeElement("students_found", studentString);
+    }
+
+    private String getString (Student student) {
+        return student.getGroupNumber()
+                +delimiter
+                +student.getAvgScore()
+                +delimiter
+                +student.getRecordBookNumber();
     }
 }
