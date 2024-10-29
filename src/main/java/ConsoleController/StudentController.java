@@ -27,7 +27,7 @@ public class StudentController extends AbstService<Student>{
             case 0:
                 return 0;
             case 1:
-                System.out.println("Введите количество студеентов");
+                System.out.println("Введите количество студентов");
                 int count = super.getAnswer(Integer.MAX_VALUE);
                 data = StudentLoader.loadRnd(count);
                 break;
@@ -39,14 +39,17 @@ public class StudentController extends AbstService<Student>{
                 String path = scanner.next();
                 try {
                     data = StudentLoader.loadFile(path);
-                } catch (IOException exception) {
-                    System.out.println("Мы не смогли найти ваш файл");
+                } catch (NumberFormatException |
+                         ArrayIndexOutOfBoundsException|
+                         IOException exception) {
+                    System.out.println("Мы не смогли найти ваш файл или ваш файл содержит некорректные данные");
                     System.out.println("Попробуйте выполнить несколько предыдущих шагов снова");
-                    menuStudentCreate();
+                    return menuStudentCreate();
                 }
                 break;
             case 3:
                 data = StudentLoader.loadConsole();
+                if(data.isEmpty()) return 0;
                 break;
             default:
                 defChoice();

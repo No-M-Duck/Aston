@@ -6,7 +6,7 @@ public class AbstService<T> implements Service<T>{
 
     protected static boolean localExit = true;
 
-    protected Scanner scanner = new Scanner(System.in);
+    protected Scanner scanner = new Scanner(System.in).useLocale(Locale.UK);
     @Override
     public int menuCreate() {
         System.out.println("* * * Создание данных * * *");
@@ -134,7 +134,7 @@ public class AbstService<T> implements Service<T>{
             return true;
         } else {
             System.out.println("Кажется с данными возникла проблема.");
-            System.out.println("Давайте начнем занаво");
+            System.out.println("Давайте начнем сначала");
             return false;
         }
 

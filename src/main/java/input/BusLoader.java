@@ -84,7 +84,7 @@ public class BusLoader implements Loader<Bus>{
             if (input.equals("")){
                 break;
             }
-            String[] busString=input.split(", ");
+            String[] busString=input.split(",\\s*");
             if(busString.length==3){
                 inputArray.add(busString);
             }
