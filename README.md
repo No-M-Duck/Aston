@@ -14,6 +14,8 @@
 
 ## Использование
 <img width="340" alt="{8D7EDE16-B9D0-47F4-831F-C8CDABAA7E39}" src="https://github.com/user-attachments/assets/a6fea865-f0d2-400d-ace5-5f2ffcb43b6a">
+<br>
+Файлы сохраняются в/загружаются из папки 'output' в корне программы.
 
 ## Разработчики
 https://github.com/No-M-Duck
