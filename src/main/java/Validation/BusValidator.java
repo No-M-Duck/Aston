@@ -16,7 +16,7 @@ public class BusValidator implements Validator<Bus> {
         return isModelValid(bus) && isNumberValid(bus) && isMileageValid(bus);
     }
 
-    private boolean isModelValid(Bus bus) {
+    public boolean isModelValid(Bus bus) {
         if (bus.getModel() == null || bus.getModel().trim().isEmpty()) {
             logInvalidBus(bus, Level.SEVERE, "Bus model is invalid or empty");
             return false;
@@ -24,7 +24,7 @@ public class BusValidator implements Validator<Bus> {
         return true;
     }
 
-    private boolean isNumberValid(Bus bus) {
+    public boolean isNumberValid(Bus bus) {
         if (bus.getNumber() == null || bus.getNumber().trim().isEmpty()) {
             logInvalidBus(bus, Level.WARNING, "Invalid bus number: " + bus.getNumber());
             return false;
@@ -36,7 +36,7 @@ public class BusValidator implements Validator<Bus> {
         return true;
     }
 
-    private boolean isMileageValid(Bus bus) {
+    public boolean isMileageValid(Bus bus) {
         if (bus.getMileage() < 0) {
             logInvalidBus(bus, Level.WARNING, "Bus mileage is negative: " + bus.getMileage());
             return false;

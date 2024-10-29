@@ -28,7 +28,7 @@ public class StudentComparator {
     public static Comparator<Student> averageScore(boolean ignoreOdd) {
         return (s1, s2) -> {
             if (ignoreOdd) {
-                if(s1.getAvgScore() % 2!=0 || s2.getAvgScore() %2 != 0){
+                if((int)(s1.getAvgScore() % 2)!=0 || (int)(s2.getAvgScore() %2) != 0){
                     return  0;
                 }
             }

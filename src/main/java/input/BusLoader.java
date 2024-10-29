@@ -76,7 +76,7 @@ public class BusLoader implements Loader<Bus>{
         Scanner scan=new Scanner(System.in);
 
         System.out.println("Для создания Bus введите данные следующим образом:");
-        System.out.println("Номер(А000АА00), Модель, Пробег");
+        System.out.println("Номер(А000АА00)[RUS], Модель, Пробег");
         System.out.println("ВНИМАНИЕ! Ввод происходит до введения пустой строки!");
 
         while(true){

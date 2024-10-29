@@ -1,5 +1,6 @@
 package App;
 
+import ConsoleController.ConsoleController;
 import input.*;
 import models.*;
 import strategy.*;
@@ -9,9 +10,8 @@ import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
-
-        Main main = new Main();
-        main.TestStudent();
+        ConsoleController consoleController = new ConsoleController();
+        consoleController.run();
     }
 
 
